@@ -6,10 +6,10 @@ export default function ScrollHero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
-  const targetScaleRef = useRef(1.5);
-  const targetYRef = useRef(5);
-  const currentScaleRef = useRef(1.5);
-  const currentYRef = useRef(5);
+  const targetScaleRef = useRef(1.2);
+  const targetYRef = useRef(3);
+  const currentScaleRef = useRef(1.2);
+  const currentYRef = useRef(3);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -22,8 +22,8 @@ export default function ScrollHero() {
       const scrolled = -top;
       const scrollable = height - window.innerHeight;
       const progress = Math.min(Math.max(scrolled / scrollable, 0), 1);
-      targetScaleRef.current = 1.5 - progress * 0.5;
-      targetYRef.current = 5 - progress * 5;
+      targetScaleRef.current = 1.2 - progress * 0.2;
+      targetYRef.current = 3 - progress * 3;
     };
 
     const SMOOTHING = 0.07;
@@ -51,23 +51,26 @@ export default function ScrollHero() {
     <div ref={containerRef} style={{ height: '300vh' }}>
       <div className="sticky top-0 w-screen h-screen overflow-hidden">
 
-        {/* Photo — drone pull-back */}
+        {/* Video — drone pull-back */}
         <div
           ref={imageRef}
           className="absolute inset-0 w-full h-full"
           style={{ transformOrigin: 'center center', willChange: 'transform', opacity: visible ? 1 : 0, transition: 'opacity 600ms ease-in' }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/hero.jpg"
-            alt="Properties in Evesham"
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
             style={{
               width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%',
               WebkitBackfaceVisibility: 'hidden', backfaceVisibility: 'hidden',
               transform: 'translateZ(0)', display: 'block',
-              filter: 'contrast(1.08) saturate(1.1) brightness(1.02)',
+              filter: 'contrast(1.12) saturate(1.2) brightness(1.0)',
             }}
-          />
+          >
+            <source src="/hero.mp4" type="video/mp4" />
+          </video>
         </div>
 
         {/* Dark gradient overlay */}
