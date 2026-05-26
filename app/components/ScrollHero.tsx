@@ -1,0 +1,131 @@
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
+
+export default function ScrollHero() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number | null>(null);
+  const targetScaleRef = useRef(1.5);
+  const targetYRef = useRef(5);
+  const currentScaleRef = useRef(1.5);
+  const currentYRef = useRef(5);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const fadeTimer = setTimeout(() => setVisible(true), 50);
+
+    const handleScroll = () => {
+      const container = containerRef.current;
+      if (!container) return;
+      const { top, height } = container.getBoundingClientRect();
+      const scrolled = -top;
+      const scrollable = height - window.innerHeight;
+      const progress = Math.min(Math.max(scrolled / scrollable, 0), 1);
+      targetScaleRef.current = 1.5 - progress * 0.5;
+      targetYRef.current = 5 - progress * 5;
+    };
+
+    const SMOOTHING = 0.07;
+    const tick = () => {
+      const image = imageRef.current;
+      if (image) {
+        currentScaleRef.current += (targetScaleRef.current - currentScaleRef.current) * SMOOTHING;
+        currentYRef.current += (targetYRef.current - currentYRef.current) * SMOOTHING;
+        image.style.transform = `scale(${currentScaleRef.current}) translateY(${currentYRef.current}%)`;
+      }
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    rafRef.current = requestAnimationFrame(tick);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      clearTimeout(fadeTimer);
+      window.removeEventListener('scroll', handleScroll);
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
+
+  return (
+    <div ref={containerRef} style={{ height: '300vh' }}>
+      <div className="sticky top-0 w-screen h-screen overflow-hidden">
+
+        {/* Photo — drone pull-back */}
+        <div
+          ref={imageRef}
+          className="absolute inset-0 w-full h-full"
+          style={{ transformOrigin: 'center center', willChange: 'transform', opacity: visible ? 1 : 0, transition: 'opacity 600ms ease-in' }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/hero.jpg"
+            alt="Properties in Evesham"
+            style={{
+              width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%',
+              WebkitBackfaceVisibility: 'hidden', backfaceVisibility: 'hidden',
+              transform: 'translateZ(0)', display: 'block',
+              filter: 'contrast(1.08) saturate(1.1) brightness(1.02)',
+            }}
+          />
+        </div>
+
+        {/* Dark gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/60 pointer-events-none" />
+
+        {/* Hero content */}
+        <div
+          className="absolute inset-0 flex flex-col items-center justify-center text-center px-6"
+          style={{ opacity: visible ? 1 : 0, transition: 'opacity 800ms ease-in 200ms' }}
+        >
+          {/* Award badge */}
+          <div className="mb-6 inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2">
+            <span className="text-yellow-400 text-sm">★</span>
+            <span className="text-white text-xs font-medium tracking-widest uppercase">British Property Awards 2025 — Gold Winner</span>
+            <span className="text-yellow-400 text-sm">★</span>
+          </div>
+
+          {/* Main headline */}
+          <h1 className="text-white font-bold tracking-tight mb-4" style={{ fontSize: 'clamp(2rem, 5vw, 4rem)', lineHeight: 1.1, textShadow: '0 2px 20px rgba(0,0,0,0.4)' }}>
+            Your Next Chapter<br />Starts With One Number
+          </h1>
+
+          {/* Subheading */}
+          <p className="text-white/80 mb-10 max-w-xl" style={{ fontSize: 'clamp(1rem, 2vw, 1.25rem)' }}>
+            Find out what your home is really worth — not what an agent thinks you want to hear.
+          </p>
+
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-4 items-center">
+            <a
+              href="https://street.co.uk/beta/platform/book-online/12c195c9-6dcc-45ed-adf9-1c5d7d4fd3c7/valuation/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                if (typeof window !== 'undefined' && (window as any).gtag) {
+                  (window as any).gtag('event', 'conversion', { send_to: 'AW-1018725426' });
+                  (window as any).gtag('event', 'click', { event_category: 'CTA', event_label: 'Book Valuation Hero' });
+                }
+              }}
+              className="px-8 py-4 rounded-full font-semibold text-white text-lg transition-all hover:scale-105 hover:shadow-2xl"
+              style={{ background: '#E0006B', boxShadow: '0 4px 24px rgba(224,0,107,0.4)' }}
+            >
+              Get a Free Valuation
+            </a>
+            <a
+              href="tel:01386761515"
+              className="px-8 py-4 rounded-full font-semibold text-white text-lg border-2 border-white/60 hover:border-white hover:bg-white/10 transition-all backdrop-blur-sm"
+            >
+              📞 01386 761515
+            </a>
+          </div>
+        </div>
+
+        {/* Scroll cue */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 text-xs tracking-widest uppercase animate-bounce">
+          Scroll
+        </div>
+      </div>
+    </div>
+  );
+}
