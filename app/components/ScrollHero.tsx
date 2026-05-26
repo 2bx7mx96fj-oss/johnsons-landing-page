@@ -62,6 +62,7 @@ export default function ScrollHero() {
             muted
             loop
             playsInline
+            poster="/hero-poster.jpg"
             style={{
               width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%',
               WebkitBackfaceVisibility: 'hidden', backfaceVisibility: 'hidden',

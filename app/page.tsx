@@ -183,11 +183,13 @@ export default function Home() {
 
           {/* Top row */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-10 border-b border-white/10">
-            {/* Logo / name */}
+            {/* Logo */}
             <div>
-              <p className="font-bold text-2xl tracking-tight">Johnsons</p>
-              <p className="text-white/60 text-sm">Property Consultants</p>
-              <div className="flex items-center gap-1 mt-2">
+              <a href="https://www.johnsons-property.co.uk" target="_blank" rel="noopener noreferrer">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/logo-white.png" alt="Johnsons Property Consultants" style={{ height: '64px', width: 'auto', display: 'block', marginBottom: '8px' }} />
+              </a>
+              <div className="flex items-center gap-1">
                 {[1,2,3,4,5].map(i => (
                   <svg key={i} className="w-3.5 h-3.5" fill="#FBBC05" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -215,6 +217,7 @@ export default function Home() {
             <div className="flex flex-col gap-2 text-sm text-white/70 text-center md:text-left">
               <a href="tel:01386761515" className="hover:text-white transition-colors">📞 01386 761515</a>
               <a href="mailto:evesham@johnsons-property.co.uk" className="hover:text-white transition-colors">✉️ evesham@johnsons-property.co.uk</a>
+              <a href="/faq" className="hover:text-white transition-colors">💬 FAQs</a>
             </div>
 
             {/* Social links */}
