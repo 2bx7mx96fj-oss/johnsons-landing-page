@@ -6,7 +6,7 @@ import Script from 'next/script';
 const NAVY = '#1B2A5E';
 const PINK = '#E0006B';
 // TODO: Replace CONVERSION_LABEL with your real label from Google Ads
-const CONVERSION_LABEL = 'REPLACE_WITH_YOUR_LABEL';
+const CONVERSION_LABEL = 'Z-iMCIy7z7UcELKI4uUD';
 
 export default function ThankYou() {
   useEffect(() => {
