@@ -62,7 +62,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 
 export default function FAQ() {
   return (
-    <main style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+    <main style={{ fontFamily: 'system-ui, -apple-system, sans-serif', color: '#111' }}>
 
       {/* Header */}
       <div className="py-20 px-6" style={{ background: NAVY }}>
