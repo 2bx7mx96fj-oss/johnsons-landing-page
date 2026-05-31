@@ -118,7 +118,7 @@ export default function ScrollHero() {
               className="px-8 py-4 rounded-full font-semibold text-white text-lg transition-all hover:scale-105 hover:shadow-2xl"
               style={{ background: '#E0006B', boxShadow: '0 4px 24px rgba(224,0,107,0.4)' }}
             >
-              Get a Free Valuation
+              Get a Free In-Person Valuation
             </a>
             <a
               href="tel:01386761515"

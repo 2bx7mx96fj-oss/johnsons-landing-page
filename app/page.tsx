@@ -67,7 +67,7 @@ export default function Home() {
 
           {/* Eyebrow */}
           <p className="text-sm font-semibold uppercase tracking-widest mb-4" style={{ color: PINK }}>
-            Free — No Obligation
+            Free In-Person Valuation — No Obligation
           </p>
 
           {/* Headline */}
@@ -83,7 +83,7 @@ export default function Home() {
             The problem is most valuations aren't valuations at all. They're a number chosen to impress you enough to sign. Then comes the price reduction. Then the months on the market. Then the stress.
           </p>
           <p className="text-gray-600 text-lg leading-relaxed mb-10">
-            At Johnsons, we've spent over 20 years giving homeowners across Evesham, Pershore, Broadway and The Lenches the honest answer — backed by real sales data, not ambition. <span className="font-semibold" style={{ color: NAVY }}>Book your free valuation in under 60 seconds.</span>
+            At Johnsons, we've spent over 20 years giving homeowners across Evesham, Pershore, Broadway and The Lenches the honest answer — backed by real sales data, not ambition. <span className="font-semibold" style={{ color: NAVY }}>Book your free in-person valuation in under 60 seconds.</span>
           </p>
 
           {/* CTA */}
@@ -116,9 +116,9 @@ export default function Home() {
               Book Online
             </p>
             <h2 className="font-bold text-3xl md:text-4xl" style={{ color: NAVY }}>
-              Get Your Free Valuation
+              Book Your Free In-Person Valuation
             </h2>
-            <p className="text-gray-500 mt-3 text-lg">Takes less than 60 seconds. No commitment required.</p>
+            <p className="text-gray-500 mt-3 text-lg">We come to you. Takes less than 60 seconds to book. No commitment required.</p>
             <p className="text-gray-400 text-sm mt-2">Hundreds of homeowners across Evesham, Pershore, Broadway and The Lenches have started here.</p>
           </div>
           <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-100">
