@@ -15,6 +15,14 @@ export default function ScrollHero() {
   useEffect(() => {
     const fadeTimer = setTimeout(() => setVisible(true), 50);
 
+    const video = document.querySelector('video');
+    if (video) {
+      video.play().catch(() => {
+        video.muted = true;
+        video.play().catch(() => {});
+      });
+    }
+
     const handleScroll = () => {
       const container = containerRef.current;
       if (!container) return;
