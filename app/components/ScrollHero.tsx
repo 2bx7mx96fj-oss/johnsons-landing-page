@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 export default function ScrollHero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const rafRef = useRef<number | null>(null);
   const targetScaleRef = useRef(1.2);
   const targetYRef = useRef(3);
@@ -15,12 +16,10 @@ export default function ScrollHero() {
   useEffect(() => {
     const fadeTimer = setTimeout(() => setVisible(true), 50);
 
-    const video = document.querySelector('video');
+    const video = videoRef.current;
     if (video) {
-      video.play().catch(() => {
-        video.muted = true;
-        video.play().catch(() => {});
-      });
+      video.muted = true;
+      video.play().catch(() => {});
     }
 
     const handleScroll = () => {
@@ -66,6 +65,7 @@ export default function ScrollHero() {
           style={{ transformOrigin: 'center center', willChange: 'transform', opacity: visible ? 1 : 0, transition: 'opacity 600ms ease-in' }}
         >
           <video
+            ref={videoRef}
             autoPlay
             muted
             loop
