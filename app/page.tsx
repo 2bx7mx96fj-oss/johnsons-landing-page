@@ -108,38 +108,10 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ── SECTION 3: BOOKING FORM ── */}
-      <div id="book" className="py-20 px-6 bg-white">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-10">
-            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: PINK }}>
-              Book Online
-            </p>
-            <h2 className="font-bold text-3xl md:text-4xl" style={{ color: NAVY }}>
-              Book Your Free In-Person Valuation
-            </h2>
-            <p className="text-gray-500 mt-3 text-lg">We come to you. Takes less than 60 seconds to book. No commitment required.</p>
-            <p className="text-gray-400 text-sm mt-2">Hundreds of homeowners across Evesham, Pershore, Broadway and The Lenches have started here.</p>
-          </div>
-          <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-100">
-            <iframe
-              src={BOOKING_URL}
-              width="100%"
-              height="700"
-              frameBorder="0"
-              style={{ display: 'block' }}
-              title="Book a Free Valuation"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* ── SECTION 4: REVIEWS + RECENTLY SOLD ── */}
+      {/* ── REVIEWS ── */}
       <div className="py-20 px-6" style={{ background: '#F8F8F8' }}>
         <div className="max-w-5xl mx-auto">
-
-          {/* Reviews — summary left, cards right */}
-          <div className="flex flex-col md:flex-row gap-10 mb-16 items-center">
+          <div className="flex flex-col md:flex-row gap-10 items-center">
 
             {/* Left — overall rating */}
             <div className="flex flex-col items-center justify-center text-center md:w-48 flex-shrink-0">
@@ -192,8 +164,38 @@ export default function Home() {
               ))}
             </div>
           </div>
+        </div>
+      </div>
 
-          {/* Recently sold property — replace /sold.jpg with your photo */}
+      {/* ── BOOKING FORM ── */}
+      <div id="book" className="py-20 px-6 bg-white">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-10">
+            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: PINK }}>
+              Book Online
+            </p>
+            <h2 className="font-bold text-3xl md:text-4xl" style={{ color: NAVY }}>
+              Book Your Free In-Person Valuation
+            </h2>
+            <p className="text-gray-500 mt-3 text-lg">We come to you. Takes less than 60 seconds to book. No commitment required.</p>
+            <p className="text-gray-400 text-sm mt-2">Hundreds of homeowners across Evesham, Pershore, Broadway and The Lenches have started here.</p>
+          </div>
+          <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+            <iframe
+              src={BOOKING_URL}
+              width="100%"
+              height="700"
+              frameBorder="0"
+              style={{ display: 'block' }}
+              title="Book a Free Valuation"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* ── FEATURED PROPERTY ── */}
+      <div className="py-20 px-6" style={{ background: '#F8F8F8' }}>
+        <div className="max-w-5xl mx-auto">
           <div className="rounded-2xl overflow-hidden shadow-lg flex flex-col md:flex-row" style={{ background: NAVY }}>
             <div className="md:w-1/2 h-64 md:h-auto relative">
               {/* TODO: Replace /sold.jpg with your recently sold property photo */}
@@ -241,7 +243,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ── SECTION 4: FOOTER / BRANDING ── */}
+      {/* ── FOOTER ── */}
       <div className="py-16 px-6 text-white" style={{ background: NAVY }}>
         <div className="max-w-5xl mx-auto">
 
