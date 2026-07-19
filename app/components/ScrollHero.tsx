@@ -114,12 +114,11 @@ export default function ScrollHero() {
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 items-center">
             <a
-              href="https://street.co.uk/beta/platform/book-online/12c195c9-6dcc-45ed-adf9-1c5d7d4fd3c7/valuation/"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => {
+              href="#book"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('book')?.scrollIntoView({ behavior: 'smooth' });
                 if (typeof window !== 'undefined' && (window as any).gtag) {
-                  (window as any).gtag('event', 'conversion', { send_to: 'AW-1018725426' });
                   (window as any).gtag('event', 'click', { event_category: 'CTA', event_label: 'Book Valuation Hero' });
                 }
               }}

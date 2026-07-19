@@ -109,7 +109,7 @@ export default function Home() {
       </div>
 
       {/* ── SECTION 3: BOOKING FORM ── */}
-      <div className="py-20 px-6 bg-white">
+      <div id="book" className="py-20 px-6 bg-white">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-10">
             <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: PINK }}>
